@@ -1,0 +1,20 @@
+name: Deploy to Testing Approval
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy:
+        description: "Type DEPLOY to continue"
+        required: true
+        default: ""
+
+jobs:
+  deploy:
+    if: ${{ github.event.inputs.deploy == 'DEPLOY' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deployment Approved
+        run: |
+          echo "Deployment approved by Team Lead"
+          echo "Proceeding to testing deployment..."

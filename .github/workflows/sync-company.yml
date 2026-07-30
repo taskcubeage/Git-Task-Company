@@ -1,0 +1,26 @@
+name: Sync Company Workflow
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - development
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Sync changes to company repository
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+        run: |
+          git remote remove origin
+          git remote add company https://x-access-token:${PAT_TOKEN}@github.com/taskcubeage/Git-Task-Company.git
+          git push company HEAD:development
