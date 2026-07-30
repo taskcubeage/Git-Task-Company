@@ -23,10 +23,9 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-      - name: Add Company Remote
-        run: |
-          git remote add company https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/apeksha1102/Git-Task-Company.git
-
       - name: Push development to Company
+        env:
+          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
+          git remote add company https://x-access-token:${PAT_TOKEN}@github.com/apeksha1102/Git-Task-Company.git
           git push company development
