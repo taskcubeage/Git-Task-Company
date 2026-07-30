@@ -24,8 +24,9 @@ jobs:
           git config user.email "github-actions@github.com"
 
       - name: Push development to Company
-        env:
-          PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-        run: |
-          git remote add company https://x-access-token:${PAT_TOKEN}@github.com/apeksha1102/Git-Task-Company.git
-          git push company development
+  env:
+    PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
+  run: |
+    git remote remove origin
+    git remote add company https://x-access-token:${PAT_TOKEN}@github.com/apeksha1102/Git-Task-Company.git
+    git push company HEAD:development
