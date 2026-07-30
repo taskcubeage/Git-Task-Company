@@ -3,4 +3,4 @@
 Browser test
 CI workflow test 
 
-Testing Company Sync Workflow
+Testing sync workflow
