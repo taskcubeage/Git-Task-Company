@@ -24,6 +24,6 @@ jobs:
 
           git checkout -B testing company/testing
 
-          git merge company/development
+          git merge company/development --allow-unrelated-histories 
 
           git push company testing
